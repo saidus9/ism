@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>jQuery</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      .red { color: red; }
+    </style>
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <h2>jQuery Selectors</h2>
+          <hr>
+            <p id="one">Paragraph with ID One</p>
+            <p id="two">Paragraph with ID One</p>
+            <p id="three">Paragraph with ID One</p>
+          <hr>
+          <input type="text" name="selector" id="selector">
+
+            <a class="btn btn-primary btn-sm" href="#" onclick="changeClass($('#selector').val())">
+              Click Me to change class
+            </a>
+
+            <a class="btn btn-info btn-sm" href="#" onclick="removeStyles()">
+              Reset all styles
+            </a>
+
+            <br><br>
+
+            <a class="btn btn-info btn-sm" href="#" onclick="addBorders()">
+              Add Borders
+            </a>
+
+            <a class="btn btn-info btn-sm" href="#" onclick="removeBorders()">
+              Remove Borders
+            </a>
+
+      </div><!-- End Row -->
+    </div><!-- End Container -->
+
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="../bootstrap/js/jquery-2.2.3.min.js"></script>
+      <script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+      <script>
+        function changeClass(x) {
+          $("#" + x).addClass('red');
+        }
+        function removeStyles() {
+          $("p").removeClass('red');
+        }
+        function addBorders() {
+          $("p").attr('style', 'border: 1px solid red;');
+        }
+        function removeBorders() {
+          $("p").removeAttr('style');
+        }
+      </script>
+
+  </body>
+</html>

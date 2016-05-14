@@ -1,0 +1,17 @@
+.empty-well
+  {
+    background: transparent;
+  }
+
+.bigger-icon
+  {
+    font-size: 48px;
+  }
+
+.footer-background
+  {
+    background: black;
+    color: white;
+  }
+
+.error { color: red; }
