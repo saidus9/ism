@@ -6,6 +6,6 @@ $router->map('GET', '/register', 'Acme\controllers\RegisterController@getShowReg
 
 $router->map('POST', '/register', 'Acme\controllers\RegisterController@postShowRegisterPage', 'register_post');
 
-$router->map('GET', '/about', 'Acme\controllers\RegisterController@getShowAboutPage', 'about');
-
 $router->map('GET', '/login', 'Acme\controllers\RegisterController@getShowLoginPage', 'login');
+
+$router->map('GET', '/about', 'Acme\controllers\PageController@getShowPage', 'generic_page');
