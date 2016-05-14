@@ -10,8 +10,6 @@ class RegisterController extends BaseController
 
     public function getShowRegisterPage()
     {
-        // include(__DIR__ . "/../../views/register.html");
-        // echo $this->twig->render('register.html');
         echo $this->blade->render("register");
     }
 
@@ -49,6 +47,10 @@ class RegisterController extends BaseController
         echo "Posted!";
     }
 
+    public function getShowAboutPage()
+    {
+        echo $this->blade->render("about");
+    }
 
     public function getShowLoginPage()
     {

@@ -36,10 +36,9 @@ class Validator
             break;
 
           default:
-            // Do nothing
+            $errors[] = "No value found!";
 
-        }
-            }
+          }
         }
         return $errors;
     }
