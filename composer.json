@@ -15,7 +15,8 @@
         "respect/validation": "^1.1",
         "twig/twig": "~1.0",
         "duncan3dc/blade": "^3.0",
-        "robmorgan/phinx": "0.4.4"
+        "robmorgan/phinx": "0.4.4",
+        "symfony/var-dumper": "^3.0"
 
 
     },
