@@ -8,4 +8,4 @@ $router->map('POST', '/register', 'Acme\controllers\RegisterController@postShowR
 
 $router->map('GET', '/login', 'Acme\controllers\RegisterController@getShowLoginPage', 'login');
 
-$router->map('GET', '/about', 'Acme\controllers\PageController@getShowPage', 'generic_page');
+$router->map('GET', '/[*]', 'Acme\controllers\PageController@getShowPage', 'generic_page');
