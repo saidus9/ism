@@ -84,7 +84,7 @@
   @section('bottomjs')
   <script>
   	$(document).ready(function(){
-  		$('#registerform').validate({
+  	/*	$('#registerform').validate({
   			rules : {
   				verify_email : {
   				required : true,
@@ -96,7 +96,7 @@
   				equalTo : "#password"
   				}
   			}
-  		});
+  		}); */
   	});
   </script>
   @stop
