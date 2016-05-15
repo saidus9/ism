@@ -40,6 +40,7 @@ class Validator
 
           }
         }
+      }
         return $errors;
     }
 }
