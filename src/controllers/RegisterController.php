@@ -44,7 +44,10 @@ class RegisterController extends BaseController
         $user->email = $_REQUEST['email'];
         $user->password = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
         $user->save();
-        echo "Posted!";
+
+        // Success page is stored in database
+        header("Location: /success");
+        exit();
     }
 
     public function getShowAboutPage()
@@ -52,11 +55,5 @@ class RegisterController extends BaseController
         echo $this->blade->render("about");
     }
 
-    public function getShowLoginPage()
-    {
-        // include(__DIR__ . "/../../views/login.html");
-        // echo $this->twig->render('login.html');
-        echo $this->blade->render("login");
-    }
 
 }
