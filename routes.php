@@ -12,21 +12,10 @@ $router->map('GET', '/testuser', 'Acme\controllers\AuthenticationController@getT
 
 $router->map('GET', '/testemail', function(){
 
-  $transport = Swift_SmtpTransport::newInstance(getenv('SMTP_HOST'), getenv('SMTP_PORT'))
-    ->setUsername(getenv('SMTP_USER'))
-    ->setPassword(getenv('SMTP_PASS'));
+  Acme\Email\SendEmail::sendEmail('john@here.ca', 'My test subject', 'My message body');
 
-    $mailer = Swift_Mailer::newInstance($transport);
+  echo "Sent mail!";
 
-    $message = Swift_Message::newInstance()
-      ->setSubject('Your subject')
-      ->setFrom(array('john@doe.com' => 'John Doe'))
-      ->setTo(array('receiver@domain.org'))
-      ->setBody('Here is the message itself');
-
-      $result = $mailer->send($message);
-
-      echo "Sent Mail!";
 });
 
 // Page Routes
