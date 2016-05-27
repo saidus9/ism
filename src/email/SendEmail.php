@@ -1,5 +1,5 @@
 <?php
-Acme\Email;
+namespace Acme\Email;
 
 class SendEmail
 {
@@ -18,7 +18,7 @@ class SendEmail
           ->setSubject($subjec)
           ->setFrom($from)
           ->setTo($to)
-          ->setBody($message);
+          ->setBody($message, 'text/html');
 
       $result = $mailer->send($message);
   }

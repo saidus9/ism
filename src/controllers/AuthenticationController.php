@@ -34,6 +34,10 @@ class AuthenticationController extends BaseController
             $okay = false;
         }
 
+        if($user->active == 0) {
+          $okay = false;
+        }
+
       if ($okay)
       {
         $_SESSION['user'] = $user;
@@ -56,9 +60,5 @@ class AuthenticationController extends BaseController
       exit();
     }
 
-    public function getTestUser()
-    {
-      dd(LoggedIn::user()->first_name);
-    }
 
 }

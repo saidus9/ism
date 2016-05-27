@@ -1,0 +1,75 @@
+php vendor/robmorgan/phinx/bin/phinx
+
+php vendor/robmorgan/phinx/bin/phinx migrate
+
+php vendor/robmorgan/phinx/bin/phinx create CreateUserTable
+
+php vendor/robmorgan/phinx/bin/phinx create SeedPagesTable
+
+php vendor/robmorgan/phinx/bin/phinx init
+
+php vendor/robmorgan/phinx/bin/phinx rollback
+
+sudo service mailcatcher status
+sudo service mailcatcher start
+
+adapter: pgsql
+host: localhost
+name: acme
+user: postgres
+pass: 'secret'
+port: 5432
+charset: utf8
+
+
+$router->map('GET', '/test', function() {
+  $user = Acme\models\User::find(1);
+  $testimonials = $user->testimonials()->get();
+
+  echo $user->first_name;
+  echo "<br>";
+  print_r($testimonials);
+});
+
+// Mailcatcher Error
+Chances are that you encountered a problem I only learned about a couple of days ago -- the installation of mailcatcher failed when using the install script I provide for the course because of a recent ruby update broke the mailcatcher install. I've updated the install script to get around this. You can probably fix it by uninstalling mailcatcher, and running the revised install.
+
+Uninstall mailcatcher like this:
+
+sudo gem uninstall mailcatcher
+
+sudo gem uninstall mime-types
+
+Then run these commands (you will get an error, but it will work)
+
+sudo gem install mime-types --version "< 3"
+
+sudo gem install mailcatcher
+
+Just to be safe, make sure you have this file: /etc/init/mailcatcher.conf
+
+ls /etc/init/mailcatcher.conf
+
+If you don't, then create it and put the contents below into it:
+
+1) Create the file: sudo vi /etc/init/mailcatcher.conf
+
+Paste in these contents (first hit "i" to get into insert mode, and when you are done, type a colon, and then wq to save and quit):
+
+-- file starts here, and do not copy this line!
+
+description "Mailcatcher"
+
+start on runlevel [2345] stop on runlevel [!2345]
+
+respawn
+
+exec /usr/bin/env $(which mailcatcher) --foreground --http-ip=0.0.0.0
+
+-- file ends here, and do not copy this line!
+
+When you are done, log out of your VM and type
+
+vagrant reload
+
+This should take care of it for you.
