@@ -17,6 +17,7 @@ class RegisterController extends BaseController
 
     public function postShowRegisterPage()
     {
+        
         $validation_data = [
       'first_name' => 'min:3',
       'last_name' => 'min:3',

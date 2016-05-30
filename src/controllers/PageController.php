@@ -15,6 +15,7 @@ class PageController extends BaseController
       {
         $browser_title = "";
         $page_content = "";
+        $page_id = 0;
 
         // Extract page name from url
         $uri = explode("/", $_SERVER['REQUEST_URI']);
@@ -28,6 +29,7 @@ class PageController extends BaseController
         foreach ($page as $item) {
           $browser_title = $item->browser_title;
           $page_content = $item->page_content;
+          $page_id = $item->id;
         }
 
         // Handling Page Not Found ErrorException
@@ -40,8 +42,9 @@ class PageController extends BaseController
 
         // Pass content to some blade template and Render the template
         echo $this->blade->render('generic-page', [
-          'browser_title' => $browser_title,
-          'page_content' => $page_content,
+            'browser_title' => $browser_title,
+            'page_content' => $page_content,
+            'page_id' => $page_id,
         ]);
       }
 

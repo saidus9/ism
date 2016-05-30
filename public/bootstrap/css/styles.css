@@ -14,4 +14,41 @@
     color: white;
   }
 
-.error { color: red; }
+.error
+  {
+    color: red;
+  }
+
+  .push-down {
+    margin-top: 20px;
+  }
+
+  /*-------- Sticky footer styles------------ */
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 140px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 140px;
+    background-color: #f5f5f5;
+  }
+  /*-------- Sticky footer styles - Custom page CSS------------ */
+
+  /* admin classes */
+.admin-hidden {
+    display: none;
+}
+.admin-display {
+    display:inline-block;
+}
+.outlined {
+    border: 1px solid red;
+}

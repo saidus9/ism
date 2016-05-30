@@ -4,10 +4,25 @@ $router->map('GET', '/register', 'Acme\controllers\RegisterController@getShowReg
 $router->map('POST', '/register', 'Acme\controllers\RegisterController@postShowRegisterPage', 'register_post');
 $router->map('GET', '/verify-account', 'Acme\controllers\RegisterController@getVerifyAccount', 'verify_account');
 
+// Testimonial Routes
+$router->map('GET', '/testimonials', 'Acme\controllers\TestimonialController@getShowTestimonials', 'testimonials');
+// Logged In User Routes
+if (Acme\auth\LoggedIn::user())
+  {
+    $router->map('GET', '/add-testimonial', 'Acme\controllers\TestimonialController@getShowAdd', 'add_testimonial');
+    $router->map('POST', '/add-testimonial', 'Acme\controllers\TestimonialController@postShowAdd', 'add_testimonial_post');
+  }
+
 // Login/Logout Routes
 $router->map('GET', '/login', 'Acme\controllers\AuthenticationController@getShowLoginPage', 'login');
 $router->map('POST', '/login', 'Acme\controllers\AuthenticationController@postShowLoginPage', 'login_post');
 $router->map('GET', '/logout', 'Acme\controllers\AuthenticationController@getLogout', 'logout');
+
+// Admin Routes
+if ((Acme\auth\LoggedIn::user()) && (Acme\auth\LoggedIn::user()->access_level == 2))
+{
+  $router->map('POST', '/admin/page/edit', 'Acme\controllers\AdminController@postSavePage', 'save_page');
+}
 
 // Page Routes
 $router->map('GET', '/', 'Acme\controllers\PageController@getShowHomePage', 'home');
