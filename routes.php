@@ -22,6 +22,7 @@ $router->map('GET', '/logout', 'Acme\controllers\AuthenticationController@getLog
 if ((Acme\auth\LoggedIn::user()) && (Acme\auth\LoggedIn::user()->access_level == 2))
 {
   $router->map('POST', '/admin/page/edit', 'Acme\controllers\AdminController@postSavePage', 'save_page');
+  $router->map('GET', '/admin/page/add', 'Acme\controllers\AdminController@getAddPage', 'add_page');
 }
 
 // Page Routes

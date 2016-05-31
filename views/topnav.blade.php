@@ -33,7 +33,7 @@
                 </a>
               </li>
               <li role="separator" class="divider"></li>
-              <li><a href="/admin/page/add">Add a page</a></li>
+              <li><a href="/admin/page/add">Add Page</a></li>
             </ul>
           </li>
             <li>
