@@ -27,20 +27,12 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="drop1">
-              <li>
-                <a class="menu-item" href="#" onclick="makePageEditable(this)">
-                  Edit Page
-                </a>
-              </li>
+              <li><a class="menu-item" href="#" onclick="makePageEditable(this)">Edit Page</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="/admin/page/add">Add Page</a></li>
             </ul>
           </li>
-            <li>
-                <a href="/logout">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Logout
-                </a>
-            </li>
+          <li><a href="/logout"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Logout</a></li>
           @elseif (Acme\Auth\LoggedIn::user())
               <li>
                   <a href="/logout">

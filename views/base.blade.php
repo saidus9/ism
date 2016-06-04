@@ -83,5 +83,7 @@
 
     @yield('bottomjs')
 
+    @include('admin.admin-js')
+
   </body>
 </html>

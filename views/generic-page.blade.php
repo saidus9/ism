@@ -16,7 +16,7 @@
             &nbsp;&nbsp;&nbsp;
             @if($page_id == 0)
               <br><br>
-              <input type="text" name="browser_title">
+              <input type="text" name="browser_title" placeholder="Enter Browser Title">
             @endif
         </article>
         <input type="hidden" name="thedata" id="thedata">
@@ -26,75 +26,4 @@
     @else
         {!! $page_content !!}
     @endif
-@stop
-
-@section('bottomjs')
-  <script>
-      @if ((Acme\Auth\LoggedIn::user()) && (Acme\Auth\LoggedIn::user()->access_level == 2))
-
-      var editor;
-
-      function makePageEditable(item){
-          if ($(".editablecontent").length != 0) {
-              $(".admin-hidden").addClass('admin-display').removeClass('admin-hidden');
-              $(item).attr("onclick","turnOffEditing(this)");
-              $(item).html("Turn off editing");
-              $(".editablecontent").attr("contenteditable","true");
-              $(".editablecontent").addClass("outlined");
-              $("#old").val($("#editablecontent").html());
-
-              var editoroptions = {
-                  allowedContent: true,
-                  floatSpaceDockedOffsetX: 150
-              }
-
-              var elements = document.getElementsByClassName( 'editablecontent' );
-              for ( var i = 0; i < elements.length; ++i ) {
-                  CKEDITOR.inline( elements[ i ], editoroptions );
-              }
-
-              CKEDITOR.on( 'instanceLoaded', function(event) {
-                      editor = event.editor;
-              });
-
-
-          } else {
-              alert ('No editable content on page!');
-          }
-      }
-
-      function turnOffEditing(item) {
-          for (name in CKEDITOR.instances) {
-              CKEDITOR.instances[name].destroy()
-          }
-          $(".admin-display").addClass('admin-hidden').removeClass('admin-display');
-          $(".menu-item").attr("onclick","makePageEditable(this)");
-          $(".menu-item").html("Edit content");
-          $(".editablecontent").attr("contenteditable","false");
-          $(".editablecontent").removeClass("outlined");
-          if ($('#old').val() != ''){
-              $(".editablecontent").html($("#old").val());
-          }
-      }
-
-      function saveEditedPage() {
-        // Get Data From ckeditor
-        var pagedata = editor.getData();
-
-        //Save Data
-        $("#thedata").val(pagedata);
-        var options = { success: showResponse };
-        $("#editpage").unbind('submit').ajaxSubmit(options);
-        $("#old").val('');
-        turnOffEditing();
-        return false;
-      }
-
-      function showResponse()
-      {
-        alert("Called Save");
-      }
-
-      @endif
-  </script>
 @stop
